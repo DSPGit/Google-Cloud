@@ -87,3 +87,16 @@ Cloud training (Notes)
 - App engine (PaaS)
 - Cloud functions (SaaS)
 
+#### Link : [https://cloud.google.com/about/locations/#regions-tab]
+
+### Day 1 Practicals: 
+- Link : https://cloud.google.com/
+- Create cloud account
+- **Important note:** always delete the resource which you dont use.
+- Console: Its the GCP dashboard
+- Cloud Shell: google cloud shell: main use is to execute commands and perform things. Eg: run a python script
+- In **new instance**:  
+  - Machine type option is no. of CPU's (the ratio is 1:4 CPU:RAM)
+  - **Shared CPU** : shared with multiple instances (on demand CPU is assigned by Google automatically) --> For testing/practice always use this shared CPU
+  1. Create a project
+  2. In Compute Engine -> VM Instances (create VM instance - select shared CPU)
