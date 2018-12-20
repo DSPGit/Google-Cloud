@@ -159,6 +159,18 @@ Cloud training (Notes)
   - Nearline 
   - Coldline (Cheapest, but the retreival time is quite high)
 
+#### Networks in GCP:
+- GCP is nothing without VPC (virtual private cloud)
+- CIDR (Classless Inter-Domain Routing)
+- **Note: IMP there is a hard limit in GCP : you can create only 7000 IPs.**
+- IGW (Internet gateway) : this is an door (switch) to your VPC to outside world. And this will be default present in VPC.
+- **Routing**
+- **Firewall**
+  - Ingres : Incoming is restricted 
+  - Egres : Outgoing is restricted
+- **Subnet**
+- 
+
 ### Day 2 Practicals:
 #### 1. Creation of Linux OS system (VM instance with Linux OS)
   - Reset/restart and observe public IP **(Answer: No change in IPs after reset)**
@@ -237,4 +249,3 @@ I/O size (minimum/optimal): 4096 bytes / 4096 bytes
 - rename 
 - delete
 
-https://storage.googleapis.com/ghya-mitun-bucket/APDevFundamentals4.1_snippets.txt
