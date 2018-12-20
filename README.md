@@ -100,3 +100,100 @@ Cloud training (Notes)
   - **Shared CPU** : shared with multiple instances (on demand CPU is assigned by Google automatically) --> For testing/practice always use this shared CPU
   1. Create a project
   2. In Compute Engine -> VM Instances (create VM instance - select shared CPU)
+**********************************************************************************************************************************
+## Day 2:
+- By default when you create an instance on cloud you will get by default 2 IP's:
+  - Internal IP : for private network
+  - External IP : for outside world
+- If external IP is changing every stop start of the instance then its an issue **hence we create a static external IP** and use it. (Check day 2 lab for creation of static ext IP)
+- ***IP adress are regional components/objects***
+- **IMP** If you have created an static external IP and you havent associated it with any intances then its FREE, as you are reserving an IP and not using it (and its not available in IP pool for GCP, and GCP has to buy a new IP to use and hence they will charge)
+- **IMP** If you have created an static external IP and you have associated it with any intances then its not FREE
+
+### GCP Persistent Disk
+- **Persistent Block storage:** Block level disks sitting on physical hard drives
+- ***Disks are zonal components/objects***
+- If you allocate 10GB for a disk and use only 1GB of space then we have to pay for 1GB only as all the cloud's have ***thin provisioning***
+- In block level storage we cannot download or upload 
+- In object storage we can upload and download
+  - the downloaded snapshot is in the cloud format (eg: GCP, azure format) we cannot use that downloaded snapshot anywhere.
+
+### Snapshot
+- Its a **backup** of the disks which can be further used for restoring the disk data if there is a server failure or data loss **(disaster recover)**.
+- snapshot of individual files is not possible hence we have to backup a disk alltogether
+
+
+### Day 2 Practicals:
+#### 1. Creation of Linux OS system (VM instance with Linux OS)
+  - Reset/restart and observe public IP **(Answer: No change in IPs after reset)**
+  - reeboot and observe the IPs **(Answer: internal unchanged but external changed)**
+
+#### 2. Create an external IP and assign it to your instances
+  - In console **VPC Network -> External IP addresses->Reserve static IP**
+  - You can assign it to any instance that you have created
+  - assign it to the instance that you created (please note the Region in which your instance is created, that needs to be selected for IP creation as well, or else the instance wont be listed)
+  - Now start stop the instance and the IP will not change as we have reserved the static ext IP.
+  - ***This should be the case in production as we dont want ext IP to be changed on every restart of the instance)***
+  
+#### 3. Persistent Disks:
+  - Create a server (create instance)
+  - assign a storage (create a disk and assign it to instance)
+  - do partitioning (eg: formatting) (commands : **fdisk -l, mkfs(create file system : in linux its ext(1/2/3), xfs - extended file system), df -h**)
+  - mount it (eg: creation of drives in the storage - for human readable ) 
+  
+**Commands:**
+````
+Create a new server 
+Check the disks (This is OS disk)
+
+  fdisk -l
+  
+Now create a new 10GB persistent disk and assign it to 
+    5  fdisk /dev/sdb
+    6  fdisk -l
+    7  clear
+    8  mkdir /tradereporting
+    9  fdisk -l
+   10  mkfs /dev/sdb
+   11  df -h
+   12  mount /dev/sdb /tradereporting/
+   13  df -h
+   14  clear
+   15  df -h
+   16  mount
+   17  clear
+   18  df -h
+   19  mount
+   20  cear
+   21  clear
+   22  history
+````
+  ##### output
+```` root@day2instance:~# fdisk -l
+Disk /dev/sda: 10 GiB, 10737418240 bytes, 20971520 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: dos
+Disk identifier: 0x8eb647e3
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/sda1  *     2048 20971486 20969439  10G 83 Linux
+root@day2instance:~# fdisk -l
+Disk /dev/sda: 10 GiB, 10737418240 bytes, 20971520 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: dos
+Disk identifier: 0x8eb647e3
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/sda1  *     2048 20971486 20969439  10G 83 Linux
+
+
+Disk /dev/sdb: 10 GiB, 10737418240 bytes, 20971520 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+````
+
