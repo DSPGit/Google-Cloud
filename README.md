@@ -111,17 +111,53 @@ Cloud training (Notes)
 - **IMP** If you have created an static external IP and you have associated it with any intances then its not FREE
 
 ### GCP Persistent Disk
-- **Persistent Block storage:** Block level disks sitting on physical hard drives
+#### 1. Persistent Block storage: (PBS) Block level disks sitting on physical hard drives
 - ***Disks are zonal components/objects***
 - If you allocate 10GB for a disk and use only 1GB of space then we have to pay for 1GB only as all the cloud's have ***thin provisioning***
 - In block level storage we cannot download or upload 
 - In object storage we can upload and download
-  - the downloaded snapshot is in the cloud format (eg: GCP, azure format) we cannot use that downloaded snapshot anywhere.
+- the downloaded snapshot is in the cloud format (eg: GCP, azure format) we cannot use that downloaded snapshot anywhere.  
 
-### Snapshot
+- **SNAPSHOT:**
 - Its a **backup** of the disks which can be further used for restoring the disk data if there is a server failure or data loss **(disaster recover)**.
 - snapshot of individual files is not possible hence we have to backup a disk alltogether
 
+#### 2. Object Level Storage: (OLS) Whatever that is accessible from internet is Object level Storage.
+- Examples of OLS is iCloud, google drive, etc 
+- Google cloud storage is the top used OLS.
+- OLS is 10 times cheaper than PBS
+- Uploading is free, but downloading is chargeable.
+- Highly scaleable
+- can be used for backup and archival
+
+### DR(Disaster recovery) & HA(High Availibilty)
+- whatever file is created in cloud, that data is replicated 3 times, this is auto backup taken by GCP
+- Regional DR is the most preferred access options by companies. 
+- 4 options of availibilty :
+  - Multi regional
+  - regional
+  - Nearline 
+  - Coldline (Cheapest)
+- After 3 years the DR backup is deleted forever.
+
+### GCP storage concepts
+#### Buckets: (used majorly to take backup of)
+- Its a container(folder) for objects (files)
+- Buckets are global
+- Keys: any object (file) stored in bucket is identified by unique identifier
+- Operations allowed in bucket:
+  - read
+  - write
+  - download
+- Its an enterprise version of google drive
+  
+#### Object life cycle:
+- You can create a cycle for an object where we can define after some no. of days move the object from one bucket to other.
+- when you say buckets here its:   **(these are the stages of the objects storage with cost staring highest from top to bottom)**
+  - Multi regional
+  - regional
+  - Nearline 
+  - Coldline (Cheapest, but the retreival time is quite high)
 
 ### Day 2 Practicals:
 #### 1. Creation of Linux OS system (VM instance with Linux OS)
@@ -196,4 +232,9 @@ Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 4096 bytes
 I/O size (minimum/optimal): 4096 bytes / 4096 bytes
 ````
+### 4. Buckets
+- Create a bucket
+- rename 
+- delete
 
+https://storage.googleapis.com/ghya-mitun-bucket/APDevFundamentals4.1_snippets.txt
