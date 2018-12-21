@@ -9,7 +9,10 @@ Cloud training (Notes)
 - https://en.wikipedia.org/wiki/Domain_Name_System
 - https://en.wikipedia.org/wiki/Cloud_load_balancing
 - https://cloud.google.com/docs/
-
+- https://cloud.google.com/kubernetes-engine/
+- https://www.theregister.co.uk/2014/05/23/google_containerization_two_billion/
+- https://en.wikipedia.org/wiki/Linux_Foundation#Cloud_Native_Computing_Foundation
+- 
 
 ## Certification Q's topic : (3 months of GCP handson is enough for clearing the certification)
 All are MCQ's
@@ -295,5 +298,22 @@ I/O size (minimum/optimal): 4096 bytes / 4096 bytes
 - **VPC Peering:**
   - used to pair 2 VPC's (note: create 2 distinct subnets )
 
+- **GKE:**
+  - Google Kubernetes Engine is a powerful cluster manager and orchestration system for running your Docker containers. Set up a cluster in minutes.
+  - Kubernetes is an **orchestration** over container
+  - here orchestration means cloud of containers
+  - Kubernetes is used to manage containers
+  - less on investments (no investments on VM required)
+  - 
+  
 ### Day 3 Practicals:
 - Create VPC: Networks -> VPC networks
+- VPC peering
+- GKE 
+  -  Create a cluster : Kubernetes Engine -> Create cluster (2nodes; zonal)
+  - Connect to cluster via shell
+  - Enter the by default command which is prompted after opening the shell
+  - run command ```` kubectl run <yourAppName> --image=httpd````
+  - this command will deploy httpd image on one container in kubernetes
+  - open the image in **workloads** and click on option **Expose** (this will expose your image to outside world)
+  - once done: goto **workloads** open your deployed image and in **services** section (last one) click on the **endpoints** : that is the endpoint of your url.
