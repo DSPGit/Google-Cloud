@@ -1,5 +1,27 @@
 # Google-Cloud
 Cloud training (Notes)
+## Links: 
+- https://www.nist.gov/
+- https://www.youtube.com/watch?v=zDAYZU4A3w0
+- https://cloud.google.com/
+- https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol
+- https://en.wikipedia.org/wiki/Content_delivery_network
+- https://en.wikipedia.org/wiki/Domain_Name_System
+- https://en.wikipedia.org/wiki/Cloud_load_balancing
+- https://cloud.google.com/docs/
+
+
+## Certification Q's topic : (3 months of GCP handson is enough for clearing the certification)
+All are MCQ's
+- IAM 
+- Compute Engine
+- GKE
+- App engine 
+- network 7-8 Q's
+- storage
+- Container
+- Images
+- Machine Types 3-4 Q's
 
 ## Day 1: 
 - Everything as a service is CLOUD. *(Platform which provides a service)*
@@ -166,8 +188,8 @@ Cloud training (Notes)
 - IGW (Internet gateway) : this is an door (switch) to your VPC to outside world. And this will be default present in VPC.
 - **Routing**
 - **Firewall**
-  - Ingres : Incoming is restricted 
-  - Egres : Outgoing is restricted
+  - Ingres : Incoming is restricted by default (incoming traffic) 
+  - Egres : Outgoing is by default all allowed (outgoing traffic)
 - **Subnet**
 - 
 
@@ -249,3 +271,29 @@ I/O size (minimum/optimal): 4096 bytes / 4096 bytes
 - rename 
 - delete
 
+*********************************************************************************************************************
+## Day 3 (Networks)
+- **VPC**
+  - Can be created in 2 ways: 
+    - Custom  (selecting the regions u need)
+    - Auto (selects all the regions by default)
+    **IMP*: You can convert auto to custom VPC but not vice-versa
+- When we create 4 subnets then we will be having 5 routings automatically (4 for subnets and 1 for internet)
+- 4 **firewall** rules automatically get created:
+  - ssh
+  - rdp
+  - icmp
+  - allow all
+  
+- We can create **VPC** in 2 ways:
+  - Multiregional (across regions)
+  - Regional (confirned within region)
+  
+- **Subnet:**
+  - Cloud reserves first 2 and last 3 ips i.e. 10.10.0.0, 10.10.0.1, 10.10.0.253, 10.10.0.254, 10.10.0.255 (which are local gateways)
+  
+- **VPC Peering:**
+  - used to pair 2 VPC's (note: create 2 distinct subnets )
+
+### Day 3 Practicals:
+- Create VPC: Networks -> VPC networks
